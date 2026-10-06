@@ -88,6 +88,29 @@ export default {
     }
 
     // /secure/<COUNTRY> comes in step 7c
+
+    const match = url.pathname.match(/^\/secure\/([A-Za-z]{2})$/);
+    if (match) {
+      const payload = await verifyAccess(request, env);
+      if (!payload) return new Response("Forbidden", { status: 403 });
+
+      const code = match[1].toUpperCase();
+      const flag = await env.FLAGS.get(`${code}.svg`);
+      if (!flag) return new Response("Flag not found", { status: 404 });
+
+      return new Response(flag.body, {
+        headers: {
+          "Content-Type": flag.httpMetadata?.contentType ?? "image/svg+xml",
+          "Cache-Control": "private, max-age=3600",
+          "Content-Security-Policy": "default-src 'none'; style-src 'unsafe-inline'",
+          "X-Content-Type-Options": "nosniff",
+        },
+      });
+    }
+
     return new Response("Not found", { status: 404 });
+
+
+	return new Response("Not found", { status: 404 });
   },
 } satisfies ExportedHandler<Env>;

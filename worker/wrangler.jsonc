@@ -20,7 +20,13 @@
 	"vars": {
 		"TEAM_DOMAIN": "https://interlinked-dev.cloudflareaccess.com",
 		"POLICY_AUD": "9753d4b71cf416510f9226cc8f9fea472ff52e288efbdf451fd58af4facfa07b"
-	}
+	},
+	"r2_buckets": [
+		{
+			"binding": "FLAGS",
+			"bucket_name": "cloudflare-assignment-flags"
+		}
+	]
 	/**
 	 * Smart Placement
 	 * https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
