@@ -10,7 +10,17 @@
 	"observability": {
 		"enabled": true
 	},
-	"upload_source_maps": true
+	"upload_source_maps": true,
+	"routes": [
+		{
+			"pattern": "tunnel.interlinked.dev/secure*",
+			"zone_name": "interlinked.dev"
+		},
+	],
+	"vars": {
+		"TEAM_DOMAIN": "https://interlinked-dev.cloudflareaccess.com",
+		"POLICY_AUD": "9753d4b71cf416510f9226cc8f9fea472ff52e288efbdf451fd58af4facfa07b"
+	}
 	/**
 	 * Smart Placement
 	 * https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
