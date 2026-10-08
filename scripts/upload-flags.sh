@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Downloads flag-icons (MIT) at a pinned version and uploads all flags to the private R2 bucket.
 set -euo pipefail
-BUCKET="cloudflare-assignment-flags"
+BUCKET="${1:-cloudflare-assignment-flags}"
 VERSION="v7.5.0"
 TMP=$(mktemp -d)
 
